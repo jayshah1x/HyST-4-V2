@@ -25,7 +25,7 @@
 //`endif
 
 //`ifdef DONT_USE_DSP
-    (* use_dsp = "no" *)
+//    (* use_dsp = "no" *)
 //`endif
     (*DONT_TOUCH="YES"*)
 module systolic_module(clk,input_left0,input_left1,input_left2,input_left3,input_left4, input_left5, input_left6,input_top0,input_top1,input_top2,input_top3,input_top4, input_top5,  input_top6, out_b_7, out_b_6,out_b_5, out_b_4, out_r_4, out_r_5, out_r_6);
@@ -34,7 +34,7 @@ module systolic_module(clk,input_left0,input_left1,input_left2,input_left3,input
     parameter ARRAY_SIZE = 2 * MATRIX_SIZE - 1;
     parameter REG_WIDTH = 16; // system type
     parameter DATA_WIDTH = 16;
-    parameter VECTOR = 1;
+    parameter VECTOR = 2;
     
     (*DONT_TOUCH="YES"*)
     input clk; 
@@ -45,13 +45,13 @@ module systolic_module(clk,input_left0,input_left1,input_left2,input_left3,input
     input [DATA_WIDTH-1:0] input_left4[VECTOR - 1:0];
     input [DATA_WIDTH-1:0] input_left5[VECTOR - 1:0];
     input [DATA_WIDTH-1:0] input_left6[VECTOR - 1:0];
-    input [DATA_WIDTH-1:0] input_top0[VECTOR - 1:0];
-    input [DATA_WIDTH-1:0] input_top1[VECTOR - 1:0];
-    input [DATA_WIDTH-1:0] input_top2[VECTOR - 1:0];
-    input [DATA_WIDTH-1:0] input_top3[VECTOR - 1:0];
-    input [DATA_WIDTH-1:0] input_top4[VECTOR - 1:0];
-    input [DATA_WIDTH-1:0] input_top5[VECTOR - 1:0];
-    input [DATA_WIDTH-1:0] input_top6[VECTOR - 1:0]; 
+    input [DATA_WIDTH-1:0] input_top0;
+    input [DATA_WIDTH-1:0] input_top1;
+    input [DATA_WIDTH-1:0] input_top2;
+    input [DATA_WIDTH-1:0] input_top3;
+    input [DATA_WIDTH-1:0] input_top4;
+    input [DATA_WIDTH-1:0] input_top5;
+    input [DATA_WIDTH-1:0] input_top6; 
     output [DATA_WIDTH-1:0] out_b_7[VECTOR - 1:0];
     output [DATA_WIDTH-1:0] out_b_6[VECTOR - 1:0];
     output [DATA_WIDTH-1:0] out_b_5[VECTOR - 1:0];
@@ -88,13 +88,20 @@ module systolic_module(clk,input_left0,input_left1,input_left2,input_left3,input
     (*DONT_TOUCH="YES"*) assign  array_input_left[4] = input_left4[VECTOR - 1:0];
     (*DONT_TOUCH="YES"*) assign  array_input_left[5] = input_left5[VECTOR - 1:0];
     (*DONT_TOUCH="YES"*) assign  array_input_left[6] = input_left6[VECTOR - 1:0];
-    (*DONT_TOUCH="YES"*) assign  array_input_top[0] = input_top0[VECTOR - 1:0];
-    (*DONT_TOUCH="YES"*) assign  array_input_top[1] = input_top1[VECTOR - 1:0];
-    (*DONT_TOUCH="YES"*) assign  array_input_top[2] = input_top2[VECTOR - 1:0];
-    (*DONT_TOUCH="YES"*) assign  array_input_top[3] = input_top3[VECTOR - 1:0];
-    (*DONT_TOUCH="YES"*) assign  array_input_top[4] = input_top4[VECTOR - 1:0];
-    (*DONT_TOUCH="YES"*) assign  array_input_top[5] = input_top5[VECTOR - 1:0];
-    (*DONT_TOUCH="YES"*) assign  array_input_top[6] = input_top6[VECTOR - 1:0];
+    (*DONT_TOUCH="YES"*) assign  array_input_top[0][0] = input_top0;
+    (*DONT_TOUCH="YES"*) assign  array_input_top[1][0] = input_top1;
+    (*DONT_TOUCH="YES"*)assign  array_input_top[2][0] = input_top2;
+    (*DONT_TOUCH="YES"*)assign  array_input_top[3][0] = input_top3;
+    (*DONT_TOUCH="YES"*)assign  array_input_top[4][0] = input_top4;
+    (*DONT_TOUCH="YES"*) assign  array_input_top[5][0] = input_top5;
+    (*DONT_TOUCH="YES"*) assign  array_input_top[6][0] = input_top6;
+    (*DONT_TOUCH="YES"*)assign  array_input_top[0][1] = input_top0;
+    (*DONT_TOUCH="YES"*)assign  array_input_top[1][1] = input_top1;
+    (*DONT_TOUCH="YES"*)assign  array_input_top[2][1] = input_top2;
+    (*DONT_TOUCH="YES"*)assign  array_input_top[3][1] = input_top3;
+    (*DONT_TOUCH="YES"*)assign  array_input_top[4][1] = input_top4;
+    (*DONT_TOUCH="YES"*)assign  array_input_top[5][1] = input_top5;
+    (*DONT_TOUCH="YES"*)assign  array_input_top[6][1] = input_top6;
     
   
     
