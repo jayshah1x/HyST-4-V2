@@ -20,13 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module delay_element #(parameter REG_WIDTH = 16, VECTOR = 1) (clk,a_n_1,b_n_1,a_n,b_n);
+module delay_element #(parameter REG_WIDTH = 16, VECTOR = 2) (clk,a_n_1,b_n_1,a_n,b_n);
     
     input clk;
     input [REG_WIDTH-1:0] a_n_1[VECTOR - 1:0] ;
-    input [REG_WIDTH-1:0] b_n_1[VECTOR - 1:0] ;
+    input [REG_WIDTH-1:0] b_n_1 [VECTOR-1:0];
     output reg [REG_WIDTH-1:0] a_n[VECTOR - 1:0] ; //NEED NOT BE REG, JUST USED HERE TO SIMPLIFY
-    output reg [REG_WIDTH-1:0] b_n[VECTOR - 1:0] ; // POINT OF OPTIMISATION, CAN REMOVE REG
+    output reg [REG_WIDTH-1:0] b_n [ VECTOR-1:0]; // POINT OF OPTIMISATION, CAN REMOVE REG
     
     initial begin
         a_n[0] = 0;a_n[1] = 0;
